@@ -15,26 +15,36 @@ def prompt_user
 end
 
 def get_user_input
-gets.chomp 
+gets.chomp.strip
 end
 
 def end_game(n)
 "Sorry, you hit #{n}. Thanks for playing!"
 end
- 
+
 
 def initial_round
-  2.times do 
-    deal_card
-    display_card_total
-end
+  first_round = deal_card + deal_card
+    display_card_total(first_round)
+ return first_round
+end 
 
-def hit?
-  # code hit? here
+def hit?(card_total)
+  prompt_user
+  input = get_user_input
+until input === "h" || input == "s"
+ invalid_command
+ prompt_user
+ input = get_user_input
 end
+  if input == "h"
+    card_total += deal_card
+  elsif input == "s"
+    card_total
+end 
 
 def invalid_command
-  # code invalid_command here
+puts "Please enter a valid command!"
 end
 
 #####################################################
@@ -42,6 +52,4 @@ end
 #####################################################
 
 def runner
-  # code runner here
 end
-    
