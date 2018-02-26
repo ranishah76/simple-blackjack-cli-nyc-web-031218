@@ -27,7 +27,7 @@ def initial_round
   first_round = deal_card + deal_card
     display_card_total(first_round)
  return first_round
-end 
+end
 
 def hit?(card_total)
   prompt_user
@@ -41,7 +41,7 @@ end
     card_total += deal_card
   elsif input == "s"
     card_total
-end 
+end
 
 def invalid_command
 puts "Please enter a valid command!"
@@ -52,4 +52,9 @@ end
 #####################################################
 
 def runner
+  welcome 
+  initial_round
+  until card_total > 21 
+    hit?
+end
 end
